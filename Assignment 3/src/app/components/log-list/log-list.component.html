@@ -1,0 +1,53 @@
+<div class="container mt-4">
+  <h2>Logs</h2>
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Filter logs by username" [(ngModel)]="filter" (keyup)="onFilterChange()" />
+  </div>
+  <div class="form-group">
+    <select class="form-control" [(ngModel)]="action" (change)="onFilterChange()">
+      <option value="">All Actions</option>
+      <option *ngFor="let action of actions" [value]="action">{{ action }}</option>
+    </select>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Username</th>
+        <th>Action</th>
+        <th class="text-center">
+          <button class="btn btn-link p-0" (click)="onSortChange('asc')">↑</button>
+          Timestamp
+          <button class="btn btn-link p-0" (click)="onSortChange('desc')">↓</button>
+        </th>
+        <th>IP Address</th>
+        <th>Browser</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let log of logs">
+        <td>{{ log.username }}</td>
+        <td>{{ log.action }}</td>
+        <td class="text-center">{{ log.requestTime | date: 'short' }}</td>
+        <td>{{ log.ip }}</td>
+        <td>{{ log.browser }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <nav>
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="onPageChange(currentPage - 1)">Previous</a>
+      </li>
+      <li *ngFor="let page of pagesToShow" class="page-item" [class.active]="currentPage === page" [class.disabled]="page === -1">
+        <a class="page-link" *ngIf="page !== -1" (click)="onPageChange(page)">{{ page }}</a>
+        <span class="page-link" *ngIf="page === -1">...</span>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <a class="page-link" (click)="onPageChange(currentPage + 1)">Next</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="mt-2 text-end">Total Logs: {{ totalLogs }}</div>
+</div>

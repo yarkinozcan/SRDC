@@ -1,0 +1,32 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card w-50">
+    <div class="card-body">
+      <h2 class="card-title text-center">User Profile</h2>
+      <hr>
+      <div class="mb-3">
+        <p><strong>Username:</strong> {{ username }}</p>
+      </div>
+      <div class="mb-3">
+        <p><strong>Name:</strong> {{ name }}</p>
+      </div>
+      <div class="mb-3">
+        <p><strong>Surname:</strong> {{ surname }}</p>
+      </div>
+      <div class="mb-3">
+        <p><strong>Email:</strong> {{ email }}</p>
+      </div>
+      <div class="mb-3">
+        <p><strong>Address:</strong> {{ address }}</p>
+      </div>
+      <div class="mb-3">
+        <p><strong>Birthdate:</strong> {{ birthdate | date: 'shortDate' }}</p>
+      </div>
+      <div class="mb-3">
+        <p><strong>Gender:</strong> {{ gender }}</p>
+      </div>
+      <div class="mb-3">
+        <p><strong>Admin?:</strong> {{ admin }}</p>
+      </div>
+    </div>
+  </div>
+</div>

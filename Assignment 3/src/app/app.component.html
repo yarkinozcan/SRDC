@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" routerLink="/main-menu">Message App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div *ngIf="isLoggedIn" class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" *ngIf="isAdmin">
+          <a class="nav-link" routerLink="/log-list">Log List</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a class="nav-link" href="#" routerLink="/create-user">Create User</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a class="nav-link" href="#" routerLink="/user-list">List All Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/send-message">Send Message</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/messages/inbox">Inbox</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="/messages/outbox">Outbox</a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="isLoggedIn">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ name }}
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#" (click)="navigateToProfile()">Profile</a>
+            <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<router-outlet></router-outlet>

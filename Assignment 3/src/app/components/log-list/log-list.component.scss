@@ -1,0 +1,33 @@
+.table {
+  width: 100%; /* Ensure the table takes the full width */
+  th, td {
+    white-space: nowrap; /* Prevent wrapping of content */
+  }
+}
+
+.timestamp-header {
+  width: 200px; /* Adjust the width as needed */
+  position: relative;
+
+  .sort-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .sort-btn:first-child {
+    left: 10px; /* Adjust the left position of the ascending sort button */
+  }
+
+  .sort-btn:last-child {
+    right: 10px; /* Adjust the right position of the descending sort button */
+  }
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.page-item.disabled .page-link {
+  cursor: not-allowed;
+}
